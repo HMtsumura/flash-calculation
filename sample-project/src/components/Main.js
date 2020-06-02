@@ -17,7 +17,7 @@ export default class Main extends React.Component{
 
         return(
             <div>                
-                {numbers.join("+")+"=?"}
+                {/* {numbers.join("+")+"=?"} */}
                 <Question numbers={numbers}/>
                 <AnswerCheck numbers={numbers}/>
             </div>

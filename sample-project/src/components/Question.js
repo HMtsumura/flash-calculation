@@ -1,44 +1,37 @@
 import React from "react";
 
-export default class Question extends React.Component{
+export default class Question extends React.Component {
     constructor(props) {
         super(props);
+        this.tick = this.tick.bind(this);
         this.state = {
-          appearingNumber: 0,
+            appearingNumber: "Ready?",
+            count: 0,
         };
-      }
-    render(){
-        const numbers = this.props.numbers; 
-        const changeNum = (number)=>{
-            this.setState({appearingNumber: number});
-        }
-        let time = 0;
-        let timer = setInterval(() => {
-            
-        }, "showNum()",2000);    
+    }
 
-        
-        const showNum = ()=>{
-            time ++;
-            console.log(timer);
-            if(time > 3){
-                clearInterval(timer);
-            }
+    tick() {
+        const numbers = this.props.numbers;
+        if (numbers.length - 1 >= this.state.count) {
+            this.setState({
+                appearingNumber: numbers[this.state.count],
+                count: this.state.count + 1
+            });
+        } else {
+            this.setState({
+                appearingNumber: "What's the answer?"
+            })
+            clearInterval(this.interval);
         }
-        //     changeNum(num);
-        //     timer ++;
-        //     console.log(timer);
-        //     if(timer > 4){
-        //         clearTimeout(showNum);
-        //     }
-        // }, 2000,timer,numbers);
-        // setTimeout((num) => {
-        //     changeNum(num);
-        //     console.log(num);
-        // }, 2000, 1);    
-        
-        return(
-            
+    }
+
+    componentDidMount() {
+        this.interval = setInterval(this.tick, 1000);
+    }
+    render() {
+        // const numbers = this.props.numbers;         
+        return (
+
             <div>{this.state.appearingNumber}</div>
         );
     }
