@@ -4,21 +4,22 @@ import logo from './logo.svg';
 import './App.css';
 import Layout from "./components/Layout"
 import Main from "./components/Main"
+import Question from "./components/Question"
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Layout />
-        <Main />
+        {/* <Layout />
+        <Main /> */}
         <ul>
           <li><Link to='/'>Home</Link></li>
-          <li><Link to='/layout'>About</Link></li>
+          <li><Link to='/main'>Main</Link></li>
           <li><Link to='/friends'>Friends</Link></li>
         </ul>
         <Route exact path='/' component={Home} />
-        <Route path='/layout' component={Layout} /> 
-        <Route path='/friends' component={Friends} />                
+        <Route path='/main' component={Main} /> 
+        <Route path='/friends' component={Friends} /> 
       </div>
     </BrowserRouter>
   );

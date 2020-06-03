@@ -1,6 +1,7 @@
 import React from "react";
 import AnswerCheck from "./AnswerCheck";
 import Question from "./Question";
+import { BrowserRouter, Route, Link, RouteComponentProps } from 'react-router-dom';
 
 export default class Main extends React.Component{
     render(){
@@ -17,10 +18,15 @@ export default class Main extends React.Component{
         }
 
         return(
-            <div>
-                <Question numbers={numbers}/>
-                <AnswerCheck numbers={numbers}/>
-            </div>
+            <BrowserRouter>
+                <div>
+                    <Question numbers={numbers}/>
+                    <AnswerCheck numbers={numbers}/>        
+                    <Route path='/question' 
+                            render= {() => <Question numbers={numbers}/>}   /> 
+                    {/* <Route path='/friends' component={Friends} /> */}
+                </div>
+            </BrowserRouter>
         );
     }
 }
