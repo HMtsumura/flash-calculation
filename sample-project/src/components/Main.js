@@ -6,6 +6,7 @@ export default class Main extends React.Component{
     render(){
         //Main.jsでは、フラッシュ暗算をする前の桁・スピード・出力回数等を設定できるようにする。
         //Componetを作って、その下の階層に設定値を渡して、計算まで持ってく。
+        //背景、文字の色、レイアウト等考える。
         const min = 1;
         const max = 9;
         const numbers = []
@@ -16,8 +17,7 @@ export default class Main extends React.Component{
         }
 
         return(
-            <div>                
-                {/* {numbers.join("+")+"=?"} */}
+            <div>
                 <Question numbers={numbers}/>
                 <AnswerCheck numbers={numbers}/>
             </div>
