@@ -1,7 +1,7 @@
 import React from "react";
 import AnswerCheck from "./AnswerCheck";
 import Question from "./Question";
-import { BrowserRouter, Route, Link, RouteComponentProps } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
