@@ -28,10 +28,8 @@ export default class Question extends React.Component {
     componentDidMount() {
         this.interval = setInterval(this.tick, 1000);
     }
-    render() {
-        // const numbers = this.props.numbers;         
+    render() {       
         return (
-
             <div>{this.state.appearingNumber}</div>
         );
     }
