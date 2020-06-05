@@ -1,4 +1,5 @@
 import React from "react";
+import AnswerCheck from "./AnswerCheck";
 
 export default class Question extends React.Component {
     constructor(props) {
@@ -7,11 +8,12 @@ export default class Question extends React.Component {
         this.state = {
             appearingNumber: "Ready?",
             count: 0,
+            appearedAllTheNumbers: false,
         };
     }
 
     tick() {
-        const numbers = this.props.numbers;
+        const numbers = this.props.location.state.numbers;
         if (numbers.length - 1 >= this.state.count) {
             this.setState({
                 appearingNumber: numbers[this.state.count],
@@ -19,18 +21,25 @@ export default class Question extends React.Component {
             });
         } else {
             this.setState({
-                appearingNumber: "What's the answer?"
+                appearingNumber: "What's the answer?",
+                appearedAllTheNumbers: true
             })
             clearInterval(this.interval);
         }
     }
 
     componentDidMount() {
-        this.interval = setInterval(this.tick, 1000);
+        this.interval = setInterval(this.tick, 500*this.props.location.state.speed);
     }
     render() {       
         return (
-            <div>{this.state.appearingNumber}</div>
+            
+            <div>
+                <div>
+                    {this.state.appearingNumber}
+                </div>
+                {this.state.appearedAllTheNumbers ? <AnswerCheck numbers={this.props.location.state.numbers}/>: null}
+            </div>
         );
     }
 }
