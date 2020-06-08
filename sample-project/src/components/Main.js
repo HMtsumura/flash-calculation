@@ -6,16 +6,17 @@ import { Button, FormLabel } from 'react-bootstrap';
 import RangeSlider from 'react-bootstrap-range-slider';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this)
         this.state = {
-            speed: 5,
+            speed: 3,
             digits: 2,
             numbers: 5,
         };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick() {
@@ -28,18 +29,10 @@ export default class Main extends React.Component {
                     }
         })
     }
-    //表示速度の設定
-    setSpeed(newSpeed){
-        this.setState({speed: newSpeed});
-    }
-    //出力最大桁数の設定
-    //TODO 設定した桁数の数字しか出力されないようにする?
-    setDigits(newDigits){
-        this.setState({digits: newDigits});
-    }
-    //出力回数の設定
-    setNumbers(newNumbers){
-        this.setState({numbers: newNumbers});
+
+    //出力内容の設定値を変更
+    handleSettingChenge(newValue,name){
+        this.setState({[name]: newValue});
     }
 
     render() {
@@ -57,41 +50,49 @@ export default class Main extends React.Component {
                 <div>
                     <Form>
                         <Form.Group>
-                            <Col xs="3">
+                        <Row className="justify-content-md-center">
+                            <Col md="2">
                                 <FormLabel>速さ {this.state.speed}</FormLabel>
                                 <RangeSlider
                                     value={this.state.speed}
+                                    name="speed"
                                     min={1}
-                                    max={10}
+                                    max={5}
                                     tooltip='auto'
                                     size='sm'
-                                    tooltipPlacement='top'
-                                    onChange={e => this.setSpeed(Number(e.target.value))}
+                                    // tooltipPlacement='left'
+                                    onChange={e => this.handleSettingChenge(Number(e.target.value),"speed")}
                                     variant='primary'
                                 />
                             </Col>
-                            <Col xs="3">
+                            </Row>
+                        <Row className="justify-content-md-center">
+                            <Col md="2">
                                 <Form.Label>桁数 {this.state.digits}</Form.Label>
                                 <RangeSlider
                                     value={this.state.digits}
                                     min={1}
-                                    max={4}
+                                    max={3}
                                     size='sm'
-                                    onChange={e => this.setDigits(Number(e.target.value))}
+                                    onChange={e => this.handleSettingChenge(Number(e.target.value), "digits")}
                                     variant='danger'
                                 />
                             </Col>
-                            <Col xs="3">
+                        </Row>
+                        <Row className="justify-content-md-center">
+                            <Col md="2">
                                 <Form.Label>数 {this.state.numbers}</Form.Label>
                                 <RangeSlider
                                     value={this.state.numbers}
+                                    name="numbers"
                                     min={1}
-                                    max={10}
+                                    max={9}
                                     size='sm'
-                                    onChange={e => this.setNumbers(Number(e.target.value))}
+                                    onChange={e => this.handleSettingChenge(Number(e.target.value), "numbers")}
                                     variant='warning'
                                 />
                             </Col>
+                        </Row>
                         </Form.Group>
                         <Button
                             variant="outline-primary"

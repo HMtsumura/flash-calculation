@@ -1,7 +1,7 @@
 import React from "react";
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Nav } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { BrowserRouter} from 'react-router-dom';
 
 export default class AnswerCheck extends React.Component {
@@ -16,7 +16,6 @@ export default class AnswerCheck extends React.Component {
     }
 
     answerCheck(answer, sum) {
-        console.log(sum);
         const isCorrect = answer == sum ? "正解" : "不正解";
         this.setState({ result: isCorrect,
                         isAnswered: true });

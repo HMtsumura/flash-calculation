@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Navbar bg="primary" variant="dark">
-          <Navbar.Brand href="/">Navbar</Navbar.Brand>
+          <Navbar.Brand href="/">Flash</Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/main">Main</Nav.Link>
