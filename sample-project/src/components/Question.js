@@ -4,19 +4,29 @@ import AnswerCheck from "./AnswerCheck";
 export default class Question extends React.Component {
     constructor(props) {
         super(props);
-        this.tick = this.tick.bind(this);
+        this.showNumber = this.showNumber.bind(this);
+
+        //出力される数字を設定
+        const appearingNumbers = []
+        for (let i = 1; i <= this.props.location.state.numbers; i++) {
+            const random = Math.random();
+            const randomNum = Math.floor(random * Math.pow(10,this.props.location.state.digits));
+            appearingNumbers.push(randomNum);
+        }
         this.state = {
             appearingNumber: "Ready?",
             count: 0,
             appearedAllTheNumbers: false,
+            numbersForAnswerCheck: appearingNumbers,
         };
     }
 
-    tick() {
-        const numbers = this.props.location.state.numbers;
-        if (numbers.length - 1 >= this.state.count) {
+    showNumber() {
+        //appearingNumbersに格納されている数字を1つずつ取り出し、
+        //最後まで出力した場合は回答へ移る
+        if (this.state.numbersForAnswerCheck.length - 1 >= this.state.count) {
             this.setState({
-                appearingNumber: numbers[this.state.count],
+                appearingNumber: this.state.numbersForAnswerCheck[this.state.count],
                 count: this.state.count + 1
             });
         } else {
@@ -29,16 +39,15 @@ export default class Question extends React.Component {
     }
 
     componentDidMount() {
-        this.interval = setInterval(this.tick, 500*this.props.location.state.speed);
+        this.interval = setInterval(this.showNumber, 500*this.props.location.state.speed);
     }
     render() {       
         return (
-            
             <div>
                 <div>
                     {this.state.appearingNumber}
                 </div>
-                {this.state.appearedAllTheNumbers ? <AnswerCheck numbers={this.props.location.state.numbers}/>: null}
+                {this.state.appearedAllTheNumbers ? <AnswerCheck numbers={this.state.numbersForAnswerCheck}/>: null}
             </div>
         );
     }

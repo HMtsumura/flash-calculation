@@ -19,45 +19,37 @@ export default class Main extends React.Component {
     }
 
     handleClick() {
-        //出力される数字を設定
-        const appearingNumbers = []
-        for (let i = 1; i <= this.state.numbers; i++) {
-            const random = Math.random();
-            const randomNum = Math.floor(random * Math.pow(10,this.state.digits));
-            appearingNumbers.push(randomNum);
-        }
         //問題出力ページに遷移
         this.props.history.push({
             pathname: '/question',
             state: { speed: this.state.speed,
                      digits: this.state.digits,
-                     numbers:　appearingNumbers,
+                     numbers:　this.state.numbers,
                     }
         })
     }
-
+    //表示速度の設定
     setSpeed(newSpeed){
         this.setState({speed: newSpeed});
     }
-
+    //出力最大桁数の設定
+    //TODO 設定した桁数の数字しか出力されないようにする?
     setDigits(newDigits){
         this.setState({digits: newDigits});
     }
-
+    //出力回数の設定
     setNumbers(newNumbers){
         this.setState({numbers: newNumbers});
     }
 
     render() {
-        //Main.jsでは、フラッシュ暗算をする前の桁・スピード・出力回数等を設定し
+        //概要:Main.jsでは、フラッシュ暗算をする前の桁・スピード・出力回数等を設定し
         //スタートボタンを押すと、画面が遷移し、計算が始まる。
         /*TODO
             要素を中央寄せにする
             スピードの調整の仕方,どれくらいのレンジにするか、小さい方が速いのか遅いのか
-            速さ・桁数・数の文言
             マイナスも出力するようにするのか
             2桁にしても、他の小さい桁も混ざるようにするのか
-            回答が終わってから、終了・もう一回
         */
 
         return (

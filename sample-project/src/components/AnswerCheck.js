@@ -1,7 +1,7 @@
 import React from "react";
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
+import { Button, Nav } from 'react-bootstrap';
 import { BrowserRouter} from 'react-router-dom';
 
 export default class AnswerCheck extends React.Component {
@@ -13,10 +13,10 @@ export default class AnswerCheck extends React.Component {
             isAnswered: false,
         };
         this.handleChange = this.handleChange.bind(this);
-        this.backTOMain = this.backTOMain.bind(this)
     }
 
     answerCheck(answer, sum) {
+        console.log(sum);
         const isCorrect = answer == sum ? "正解" : "不正解";
         this.setState({ result: isCorrect,
                         isAnswered: true });
@@ -26,42 +26,39 @@ export default class AnswerCheck extends React.Component {
         this.setState({ answer: e.target.value });
     }
 
-    backTOMain(){
-        this.props.history.push('/');
-    }
-
     render() {
         const numbers = this.props.numbers;
         const sum = (accumulator, currentValue) => accumulator + currentValue;
         return (
+            <BrowserRouter> 
             <div>
                 <input type="number"
                     disabled={this.state.isAnswered}
                     value={this.state.answer}
                     onChange={(e) => this.handleChange(e)}>
-
                 </input>
                 <Button
                     disabled={this.state.isAnswered} 
-                    onClick={() => this.answerCheck(this.state.answer, numbers.reduce(sum))}
-                    >
+                    onClick={() => this.answerCheck(this.state.answer, numbers.reduce(sum))}>
                     回答
                 </Button>
                 <div>{this.state.result}</div>
                 {this.state.isAnswered?
                     <div><Button 
                             size="sm"
-                            variant="outline-primary">
+                            variant="outline-primary"
+                            href="/question">
                                 もう一回
                                 </Button>
                                 {' '}
                         <Button 
                             size="sm"
                             variant="outline-primary"
-                            onClick={this.backTOMain}>
+                            href="/">
                             終わる</Button>
                     </div>:null}
             </div>
+            </BrowserRouter>
         );
     }
 }
