@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from 'react-dom'
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
+import { Button, FormLabel } from 'react-bootstrap';
 import { BrowserRouter} from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -56,7 +56,7 @@ export default class AnswerCheck extends React.Component {
                 </Button>
                 </Col>
                 </Row>
-                <div>{this.state.result}</div>
+                <FormLabel>{this.state.result}</FormLabel>
                 {this.state.isAnswered?
                     <div><Button 
                             size="sm"

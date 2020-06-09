@@ -47,7 +47,7 @@ export default class Main extends React.Component {
 
         return (
             <BrowserRouter>
-                <div>
+                <div className="main">
                     <Form>
                         <Form.Group>
                         <Row className="justify-content-md-center">

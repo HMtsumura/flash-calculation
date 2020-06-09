@@ -1,7 +1,21 @@
 .App{
   text-align: center;
+  background-color: #282c34;
 } 
 
+.form-label{
+  color: white;
+}
+
+.main{
+  height:100vh;
+  margin-top: 10%;
+}
+
+.main > .appearing-number{
+  margin-top: 5%;
+  font-size: xx-large;
+}
 /*
 .App-logo {
   height: 40vmin;

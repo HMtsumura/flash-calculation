@@ -1,5 +1,6 @@
 import React from "react";
 import AnswerCheck from "./AnswerCheck";
+import { FormLabel } from 'react-bootstrap';
 
 export default class Question extends React.Component {
     constructor(props) {
@@ -43,10 +44,10 @@ export default class Question extends React.Component {
     }
     render() {       
         return (
-            <div>
-                <div>
+            <div className="main">
+                <FormLabel className="appearing-number">
                     {this.state.appearingNumber}
-                </div>
+                </FormLabel>
                 {this.state.appearedAllTheNumbers ? <AnswerCheck numbers={this.state.numbersForAnswerCheck}/>: null}
             </div>
         );
