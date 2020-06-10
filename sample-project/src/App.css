@@ -15,7 +15,12 @@
 .main > .appearing-number{
   margin-top: 5%;
   font-size: xx-large;
+  font-weight: bolder;
 }
+.result{
+  font-size: xx-large;
+}
+
 /*
 .App-logo {
   height: 40vmin;

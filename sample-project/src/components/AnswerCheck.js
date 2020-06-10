@@ -56,7 +56,7 @@ export default class AnswerCheck extends React.Component {
                 </Button>
                 </Col>
                 </Row>
-                <FormLabel>{this.state.result}</FormLabel>
+                <FormLabel className="result">{this.state.result}</FormLabel>
                 {this.state.isAnswered?
                     <div><Button 
                             size="sm"
