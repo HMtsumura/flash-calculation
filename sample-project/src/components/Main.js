@@ -50,8 +50,8 @@ export default class Main extends React.Component {
                 <div className="main">
                     <Form>
                         <Form.Group>
-                        <Row className="justify-content-md-center">
-                            <Col md="2">
+                        <Row className="justify-content-center justify-content-sm-center">
+                            <Col lg="3" md="5" sm="5" xl="3" xs="5">
                                 <FormLabel>速さ {this.state.speed}</FormLabel>
                                 <RangeSlider
                                     value={this.state.speed}
@@ -66,8 +66,8 @@ export default class Main extends React.Component {
                                 />
                             </Col>
                             </Row>
-                        <Row className="justify-content-md-center">
-                            <Col md="2">
+                        <Row className="justify-content-center">
+                            <Col lg="3" md="5" sm="5" xl="3" xs="5">
                                 <Form.Label>桁数 {this.state.digits}</Form.Label>
                                 <RangeSlider
                                     value={this.state.digits}
@@ -79,8 +79,8 @@ export default class Main extends React.Component {
                                 />
                             </Col>
                         </Row>
-                        <Row className="justify-content-md-center">
-                            <Col md="2">
+                        <Row className="justify-content-center">
+                            <Col lg="3" md="5" sm="5" xl="3" xs="5">
                                 <Form.Label>数 {this.state.numbers}</Form.Label>
                                 <RangeSlider
                                     value={this.state.numbers}
